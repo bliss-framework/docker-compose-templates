@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  redis:
+    image: redis/redis-stack:latest
+    restart: "no"
+    environment:
+      - REDIS_ARGS=--requirepass Password3000!!
+      - REDISTIMESERIES_ARGS=RETENTION_POLICY=20
+    ports:
+      - '6379:6379'
+      - '8001:8001'
+    volumes: 
+      - ./data:/data
+      - ./local-redis-stack.conf:/redis-stack.conf
