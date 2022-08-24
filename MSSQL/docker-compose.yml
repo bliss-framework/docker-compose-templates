@@ -5,5 +5,7 @@ services:
     environment:
       SA_PASSWORD: "Password3000!!"
       ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
     volumes:
       - ./data:/var/opt/mssql/data
