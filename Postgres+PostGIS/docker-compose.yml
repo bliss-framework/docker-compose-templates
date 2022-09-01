@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+    postgres:
+        image: postgis/postgis:14-3.2-alpine
+        restart: "no"
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: Password3000!!
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '5435:5432'
+        volumes: 
+          - ./data:/var/lib/postgresql/data
+          - ./shared:/mnt
+          # copy the sql script to create tables
+          # - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
