@@ -3,6 +3,7 @@ services:
     postgres:
         image: postgis/postgis:14-3.2-alpine
         restart: "no"
+        shm_size: '3gb'
         environment:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: Password3000!!
