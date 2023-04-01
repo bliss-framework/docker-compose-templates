@@ -10,4 +10,4 @@ services:
       - 3306:3306
     volumes:
       # to allow imports from local fs
-      - ./shared:/mnt/shared
+      - ./shared:/var/lib/mysql
