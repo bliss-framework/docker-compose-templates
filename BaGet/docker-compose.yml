@@ -1,17 +1,11 @@
 version: '3.7'
 
-networks:
-  default:
-  shared-network:
-    external: true
-
 services:
   nuget-server:
     image: loicsharma/baget
     restart: "no"
     networks:
-      - default
-      - shared-network
+      - postgresql
     environment:
       ApiKey: cbd4f0601f15466eb689
       PackageDeletionBehavior: HardDelete
@@ -19,11 +13,16 @@ services:
       Storage__Type: FileSystem
       Storage__Path: /var/baget/packages
       Database__Type: PostgreSql
-      Database__ConnectionString: Server=postgres;Port=5432;Database=baget;User Id=baget;Password=Password3000!!;
+      Database__ConnectionString: Server=postgres;Port=5432;Database=baget;User Id=baget;Password=baget;
       Search__Type: Database
       Mirror__Enabled: "true"
       Mirror__PackageSource: https://api.nuget.org/v3/index.json
+      Logging__Console__LogLevel__Default: Debug
     ports:
-      - '60400:80'
-    volumes: 
+      - '5555:80'
+    volumes:
       - ./data:/var/baget
+
+networks:
+  postgresql:
+    external: true
