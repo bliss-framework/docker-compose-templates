@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  docker-registry:
+    image: registry
+    restart: "no"
+    ports:
+      - "30100:5000"
+    networks:
+      default:
+        aliases:
+          - docker-registry
+    volumes: 
+      - ./registry:/var/lib/registry
+      - ./registry-config.yml:/etc/docker/registry/config.yml
+
+  docker-registry-ui:
+    image: joxit/docker-registry-ui
+    ports:
+      - "31100:8080"
+    environment:
+      # - REGISTRY_URL=http://localhost:30100
+      - REGISTRY_TITLE=local
+      - DELETE_IMAGES=true
+      - NGINX_LISTEN_PORT=8080
+      - NGINX_PROXY_PASS_URL=http://docker-registry:5000
