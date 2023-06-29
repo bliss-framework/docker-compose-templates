@@ -4,7 +4,7 @@ FROM postgres:alpine
 RUN apk add \
     git \
     build-base \
-    clang \
+    clang15 \
     llvm
 
 RUN git clone --branch v0.4.1 https://github.com/pgvector/pgvector.git
