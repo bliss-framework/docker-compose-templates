@@ -1,0 +1,13 @@
+version: "3"
+services:
+  memgraph-platform:
+    image: "memgraph/memgraph-platform"
+    ports:
+      - "7687:7687"
+      - "5555:3000"
+      - "7444:7444"
+    volumes:
+      - ./data/mg_lib:/var/lib/memgraph
+      - ./data/mg_log:/var/log/memgraph
+      - ./data/mg_etc:/etc/memgraph
+    entrypoint: ["/usr/bin/supervisord"]
