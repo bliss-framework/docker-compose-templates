@@ -10,7 +10,6 @@ services:
     build: .
     restart: "no"
     networks:
-      - shared-network
       - default
     environment:
       POSTGRES_USER: postgres
