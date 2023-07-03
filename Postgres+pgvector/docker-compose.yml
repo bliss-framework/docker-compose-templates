@@ -7,10 +7,9 @@ networks:
 services:
   postgres_pgvector:
     shm_size: "2gb"
-    image: postgres-pgvector
+    build: .
     restart: "no"
     networks:
-      - shared-network
       - default
     environment:
       POSTGRES_USER: postgres
@@ -20,7 +19,7 @@ services:
         max-size: 10m
         max-file: "3"
     ports:
-      - '5434:5432'
+      - '5438:5432'
     volumes: 
       - ./data:/var/lib/postgresql/data
       - ./shared:/mnt

@@ -1,7 +1,7 @@
 version: '3.7'
 services:
-    postgres14:
-        image: postgres:14
+    postgres13:
+        image: postgres:13
         restart: always
         environment:
           - POSTGRES_USER=postgres
@@ -11,7 +11,7 @@ services:
             max-size: 10m
             max-file: "3"
         ports:
-          - '5432:5432'
+          - '5433:5432'
         volumes: 
           - ./data:/var/lib/postgresql/data
           # copy the sql script to create tables
