@@ -37,17 +37,19 @@ services:
       - loki
     volumes:
       - ./data/loki:/var/loki:RW
+      - ./config/loki:/etc/loki
     ports:
       - "3100:3100"
       - "9096:9096"
-    command: -config.file=/var/loki/config/loki-config.yml
+    command: -config.file=/etc/loki/loki-config.yml
     
   promtail:
     image: grafana/promtail:2.8.0
     volumes:
       - ./data/promtail:/mnt/promtail:RW
-      - /var/log:/var/log
-    command: -config.file=/mnt/promtail/config/promtail-config.yml
+      - ./config/promtail:/etc/promtail
+      - ./log:/var/custom-log
+    command: -config.file=/etc/promtail/promtail-config.yml
     networks:
       - loki
 
