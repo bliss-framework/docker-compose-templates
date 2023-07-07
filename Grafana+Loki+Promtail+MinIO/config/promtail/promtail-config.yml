@@ -18,4 +18,4 @@ scrape_configs:
       - loki
     labels:
       job: varlogs
-      __path__: /var/log/*.log
+      __path__: /var/custom-log/*.log
