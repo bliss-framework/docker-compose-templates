@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  postgres:
+    image: gotenberg/gotenberg:7
+    restart: unless-stopped
+    networks:
+      - gotenberg
+    ports:
+      - "3000:3000"
+networks:
+  gotenberg:
+    # use externaly created network to access from other containers in development
+    external: true
