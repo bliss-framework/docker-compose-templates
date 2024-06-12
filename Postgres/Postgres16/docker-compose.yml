@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-    postgres14:
+    postgres16:
         image: postgres:16
         restart: always
         environment:
