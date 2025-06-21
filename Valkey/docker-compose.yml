@@ -1,0 +1,18 @@
+services:
+    valkey:
+        image: valkey/valkey
+        shm_size: 4g
+        restart: always
+        # environment:
+          # - VALKEY_EXTRA_FLAGS=--save 60 1 --loglevel warning
+        logging:
+          options:
+            max-size: 10m
+            max-file: "3"
+        ports:
+          - '6379:6379'
+        command: ["valkey-server", "/usr/local/etc/valkey/valkey.conf"]
+        volumes: 
+          - ./data:/data
+          - ./custom-valkey.conf:/usr/local/etc/valkey/valkey.conf
+          - ./users.acl:/usr/local/etc/valkey/users.acl

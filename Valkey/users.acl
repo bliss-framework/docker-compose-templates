@@ -1,0 +1,5 @@
+user default off
+
+user userwithpassword on allcommands allkeys >Password3000!!
+
+user admin on +@admin ~* >password
